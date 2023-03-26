@@ -81,7 +81,8 @@ export BB_PROMPT_TAG="blue"
 
 ## Todo
 - [ ] better screenshots (do not forget ahead and behind)
-- [ ] adjust color of slash in between ahead and behind
+- [x] adjust color of slash in between ahead and behind
+  - now has the color of `BB_PROMPT_GIT`
 - [ ] adjust VARs (more/rmv?)
 
 
