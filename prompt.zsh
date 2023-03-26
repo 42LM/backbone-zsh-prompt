@@ -305,20 +305,23 @@ function +vi-git-st() {
     local ahead behind
     local -a gitstatus
 
-    # Exit early in case the worktree is on a detached HEAD
-    git rev-parse ${hook_com[branch]}@{upstream} >/dev/null 2>&1 || return 0
+    # only display changed file count on branch when action is empty
+    if [[ ${hook_com[action]} == '' ]]; then
+        # Exit early in case the worktree is on a detached HEAD
+        git rev-parse ${hook_com[branch]}@{upstream} >/dev/null 2>&1 || return 0
 
-    local -a ahead_and_behind=(
-        $(git rev-list --left-right --count HEAD...${hook_com[branch]}@{upstream} 2>/dev/null)
-    )
+        local -a ahead_and_behind=(
+            $(git rev-list --left-right --count HEAD...${hook_com[branch]}@{upstream} 2>/dev/null)
+        )
 
-    ahead=${ahead_and_behind[1]}
-    behind=${ahead_and_behind[2]}
+        ahead=${ahead_and_behind[1]}
+        behind=${ahead_and_behind[2]}
 
-    (( $ahead )) && gitstatus+=( "%F{${BB_PROMPT_AHEAD_BEHIND}}⇡${ahead}%f" )
-    (( $behind )) && gitstatus+=( "%F{${BB_PROMPT_AHEAD_BEHIND}}⇣${behind}%f" )
+        (( $ahead )) && gitstatus+=( "%F{${BB_PROMPT_AHEAD_BEHIND}}⇡${ahead}%f" )
+        (( $behind )) && gitstatus+=( "%F{${BB_PROMPT_AHEAD_BEHIND}}⇣${behind}%f" )
 
-    hook_com[misc]+=${(j:%F{${BB_PROMPT_GIT}}/%f:)gitstatus}
+        hook_com[misc]+=${(j:%F{${BB_PROMPT_GIT}}/%f:)gitstatus}
+    fi
 }
 
 
