@@ -102,7 +102,7 @@ prompt_precmd() {
         if $(warp_term_program); then
             PS1="%B%F{${BB_PROMPT_DIR}}%~%f"
         else
-            PS1=$'\n''%B%F{${BB_PROMPT_DIR}}%~%f'$'\n'$'\U0001F9B4''%f%b '
+            PS1=$'\n''%B%F{${BB_PROMPT_DIR}}%~%f'$'\n''%%%f%b '
         fi
     else
         # vcs_info found something, that needs space. So a shorter $PWD
@@ -111,7 +111,7 @@ prompt_precmd() {
         if $(warp_term_program); then
             PS1="%B%F{${BB_PROMPT_DIR}}%~%f ${vcs_info_msg_0_}%b"
         else
-            PS1=$'\n''%B%F{${BB_PROMPT_DIR}}%~%f ${vcs_info_msg_0_}'$'\n'$'\U0001F9B4''%f%b '
+            PS1=$'\n''%B%F{${BB_PROMPT_DIR}}%~%f ${vcs_info_msg_0_}'$'\n''%%%f%b '
         fi
     fi
 }

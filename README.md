@@ -98,6 +98,7 @@ export BB_PROMPT_PROJECTS=false
   - now has the color of `BB_PROMPT_GIT`
 - [x] option to turn off estyle-cfc / only checking for changes in `~/code/...`
   - furthermore there is another option to set the directory of the projects folder
+- [ ] option to set prompt sign for e.g. iterm
 - [ ] option for showing git tag!?
 - [ ] adjust VARs (more/rmv?)
 - [ ] remove more unused code!?
