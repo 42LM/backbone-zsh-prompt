@@ -34,11 +34,13 @@ If you are like me and just looking for a prompt that is _"not more than the bar
 ### For the purists, download the only relevant file `prompt.zsh`:
 * Download to `~/.zsh`:
   ```zsh
-  curl -JO https://github.com/lmllrjr/backbone-zsh-prompt/prompt.zsh --create-dirs --output-dir ~/.zsh/backbone-zsh-prompt
+  curl -LJo ~/.zsh/backbone-zsh-prompt/prompt.zsh --create-dirs \
+  https://github.com/lmllrjr/backbone-zsh-prompt/prompt.zsh
   ```
 * Download to `~/.config/zsh`:
   ```zsh
-  curl -JO https://github.com/lmllrjr/backbone-zsh-prompt/prompt.zsh --create-dirs --output-dir ~/.config/zsh/backbone-zsh-prompt
+  curl -LJo ~/.config/zsh/backbone-zsh-prompt/prompt.zsh --create-dirs \
+  https://github.com/lmllrjr/backbone-zsh-prompt/prompt.zsh
   ```
 
 ### Load the prompt in your `.zshrc` file:
@@ -87,6 +89,7 @@ export BB_PROMPT_TAG="blue"
   - now has the color of `BB_PROMPT_GIT`
 - [ ] option to turn off estyle-cfc / only checking for changes in `~/code/...`
   - right now the (`+`/unstaged) element is not shown when outside of `~/code/...` for perfomance reasons
+- [ ] option for showing git tag!?
 - [ ] adjust VARs (more/rmv?)
 - [ ] remove more unused code!?
 
