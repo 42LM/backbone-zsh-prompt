@@ -80,7 +80,7 @@ zstyle ':vcs_info:*+pre-get-data:*' hooks pre-get-data
 ### Helper for prompt_precmd
 # Check if shell is running in WarpTerminal
 function warp_term_program() {
-    if [ "$TERM_PROGRAM" = "WarpTerminal" ]; then
+    if [[ ${TERM_PROGRAM} = "WarpTerminal" ]]; then
         echo true
         return
     fi
@@ -275,15 +275,15 @@ function +vi-git-branch(){
 
 # Make sure you have added misc to your 'formats':  %m
 function +vi-git-count() {
-    local -a changedFileCount
+    local -a changed_file_count
 
     # only display changed file count on branch when action is empty
     if [[ ${hook_com[action]} == '' ]]; then
-        changedFileCount=$(git status -sb | wc -l)
-        changedFileCount="$(($changedFileCount - 1))"
-        if [[ ${changedFileCount} != 0 ]]; then
+        changed_file_count=$(git status -sb | wc -l)
+        changed_file_count="$(($changed_file_count - 1))"
+        if [[ ${changed_file_count} != 0 ]]; then
             # (%F{}) will set the default foreground color
-            hook_com[misc]+="%F{${BB_PROMPT_COUNT}}±${changedFileCount}%f"
+            hook_com[misc]+="%F{${BB_PROMPT_COUNT}}±${changed_file_count}%f"
         fi
     fi
 }
@@ -296,7 +296,6 @@ function +vi-git-count() {
 # Make sure you have added misc to your 'formats':  %m
 function +vi-git-stash() {
     local -a stash
-    local -a changedFileCount
 
     # only display changed file count on branch when action is empty
     if [[ ${hook_com[action]} == '' ]]; then
@@ -348,7 +347,7 @@ function +vi-git-st() {
 # have been applied:
 zstyle ':vcs_info:*+gen-applied-string:*' hooks gen-applied-string
 function +vi-gen-applied-string() {
-    local conflictedFileCount=$(git ls-files --unmerged | cut -f2 | sort -u | wc -l | Xargs)
-    hook_com[applied-string]+="±${conflictedFileCount}"
+    local conflicted_file_count=$(git ls-files --unmerged | cut -f2 | sort -u | wc -l | Xargs)
+    hook_com[applied-string]+="±${conflicted_file_count}"
     ret=1
 }
