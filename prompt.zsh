@@ -16,6 +16,11 @@
 ! [ -v BB_PROMPT_COUNT ] && BB_PROMPT_COUNT="#93a1a1"
 # TODO: one missing var for delimiter in ahead behind
 
+! [ -v BB_PROMPT_PROJECTS_PATH ] && BB_PROMPT_PROJECTS_PATH="${HOME}/code"
+# disable checking only in the subtree of BB_PROMPT_PROJECTS_PATH
+# by setting BB_PROMPT_PROJECTS to false
+! [ -v BB_PROMPT_PROJECTS ] && BB_PROMPT_PROJECTS=true
+
 ## vim:ft=zsh
 
 ### Running vcs_info #########################################################
@@ -136,14 +141,17 @@ add-zsh-hook chpwd prompt_chpwd
 # instantaneously - even on my old laptop at 600MHz. And the following code
 # enables `check-for-changes' only in that subtree:
 
-zstyle -e ':vcs_info:git:*' \
-    check-for-changes 'estyle-cfc && reply=( true ) || reply=( false )'
+# check if projects option is enabled
+if ${BB_PROMPT_PROJECTS}; then
+    zstyle -e ':vcs_info:git:*' \
+        check-for-changes 'estyle-cfc && reply=( true ) || reply=( false )'
+fi
 
 function estyle-cfc() {
     local d
     local -a cfc_dirs
     cfc_dirs=(
-        ${HOME}/code/*(/)
+        ${BB_PROMPT_PROJECTS_PATH}/*(/)
     )
 
     for d in ${cfc_dirs}; do
@@ -158,15 +166,22 @@ function estyle-cfc() {
 # Debugging is off by default - of course.
 # zstyle ':vcs_info:*+*:*' debug true
 
+if ! ${BB_PROMPT_PROJECTS}; then
+    zstyle ':vcs_info:*' check-for-changes true
+else
+    zstyle ':vcs_info:*' check-for-staged-changes true
+fi
+
 # Check the repository for changes so they can be used in %u/%c (see
 # below). This comes with a speed penalty for bigger repositories.
 # ⚠️ function estyle-cfc() already sets check-for-changes for my directory ⚠️
+# check if projects option is enabled
 # zstyle ':vcs_info:*' check-for-changes true
 # zstyle ':vcs_info:*' get-revision true
 
 # Alternatively, the following would set only %c, but is faster:
 # zstyle ':vcs_info:*' check-for-changes false
-zstyle ':vcs_info:*' check-for-staged-changes true
+# zstyle ':vcs_info:*' check-for-staged-changes true
 
 # This string will be used in the %c escape if there are staged changes in the repository.
 zstyle ':vcs_info:git*' stagedstr '∗'
