@@ -43,30 +43,30 @@ The default setup expects the projects you work on daily to be in the folder `$H
   git clone git@github.com:lmllrjr/backbone-zsh-prompt.git ~/.config/zsh/backbone-zsh-prompt
   ```
 
-### For the purists, download the only relevant file `prompt.zsh`:
+### For the purists, download the only relevant file `bb.zsh`:
 * Download to `~/.zsh`:
   ```zsh
-  curl -LJo ~/.zsh/backbone-zsh-prompt/prompt.zsh --create-dirs \
-  https://github.com/lmllrjr/backbone-zsh-prompt/prompt.zsh
+  curl -LJo ~/.zsh/backbone-zsh-prompt/bb.zsh --create-dirs \
+  https://github.com/lmllrjr/backbone-zsh-prompt/bb.zsh
   ```
 * Download to `~/.config/zsh`:
   ```zsh
-  curl -LJo ~/.config/zsh/backbone-zsh-prompt/prompt.zsh --create-dirs \
-  https://github.com/lmllrjr/backbone-zsh-prompt/prompt.zsh
+  curl -LJo ~/.config/zsh/backbone-zsh-prompt/bb.zsh --create-dirs \
+  https://github.com/lmllrjr/backbone-zsh-prompt/bb.zsh
   ```
 
 ### Load the prompt in your `.zshrc` file:
 * Load from `~/.zsh`:
   ```zsh
-  # only load prompt if the `prompt.zsh` file exists
-  [ -f $HOME/.zsh/backbone-zsh-prompt/prompt.zsh ] && \
-  source $HOME/.zsh/backbone-zsh-prompt/prompt.zsh
+  # only load prompt if the `bb.zsh` file exists
+  [ -f $HOME/.zsh/backbone-zsh-prompt/bb.zsh ] && \
+  source $HOME/.zsh/backbone-zsh-prompt/bb.zsh
   ```
 * Load from `~/.config/zsh`:
   ```zsh
-  # only load prompt if the `prompt.zsh` file exists
-  [ -f $HOME/.config/zsh/backbone-zsh-prompt/prompt.zsh ] && \
-  source $HOME/.config/zsh/backbone-zsh-prompt/prompt.zsh
+  # only load prompt if the `bb.zsh` file exists
+  [ -f $HOME/.config/zsh/backbone-zsh-prompt/bb.zsh ] && \
+  source $HOME/.config/zsh/backbone-zsh-prompt/bb.zsh
   ```
 
 ## Explanation of elements
@@ -101,9 +101,9 @@ export BB_PROMPT_TAG="blue"
 export BB_PROMPT_PROJECTS_PATH="${HOME}/my/projects/path"
 export BB_PROMPT_PROJECTS=false
 
-# only load prompt if the `prompt.zsh` file exists
-[ -f $HOME/.config/zsh/backbone-zsh-prompt/prompt.zsh ] && \
-source $HOME/.config/zsh/backbone-zsh-prompt/prompt.zsh
+# only load prompt if the `bb.zsh` file exists
+[ -f $HOME/.config/zsh/backbone-zsh-prompt/bb.zsh ] && \
+source $HOME/.config/zsh/backbone-zsh-prompt/bb.zsh
 ```
 
 >**Note**:  
