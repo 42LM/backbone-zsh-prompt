@@ -82,7 +82,8 @@ The default setup expects the projects you work on daily to be in the folder `$H
 | BB_PROMPT_AHEAD_BEHIND  | The ahead and behind arrows + counters   | `"#2aa198"`      | string |
 | BB_PROMPT_TAG           | The git tag                              | `"#93a1a1"`      | string |
 | BB_PROMPT_COUNT         | Changed file count on branch             | `"#93a1a1"`      | string |
-|                         |                                          |                  |        |
+|                         |                                          |                |        |
+| BB_PROMPT_SHOW_TAG      | Turn show tag option on or off           | false          | bool   |
 | BB_PROMPT_PROJECTS_PATH | The path of the project folder           | `"${HOME}/code"` | string |
 | BB_PROMPT_PROJECTS      | Turn the project folder option on or off | `true`           | bool   |
 
@@ -100,6 +101,7 @@ export BB_PROMPT_GIT="#EEEEEE"
 export BB_PROMPT_TAG="blue"
 export BB_PROMPT_PROJECTS_PATH="${HOME}/my/projects/path"
 export BB_PROMPT_PROJECTS=false
+export BB_PROMPT_SHOW_TAG=true
 
 # only load prompt if the `bb.zsh` file exists
 [ -f $HOME/.config/zsh/backbone-zsh-prompt/bb.zsh ] && \
@@ -118,8 +120,8 @@ source $HOME/.config/zsh/backbone-zsh-prompt/bb.zsh
 - [x] option to turn off estyle-cfc / only checking for changes in `~/code/...`
   - furthermore there is another option to set the directory of the projects folder
 - [x] remove more unused code!?
+- [x] option for showing git tag!?
 - [ ] option to set prompt sign for e.g. iterm
-- [ ] option for showing git tag!?
 - [ ] option for DEBUG!?  
 
 ~- [ ] adjust VARs (more/rmv?)~

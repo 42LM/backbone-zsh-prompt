@@ -21,6 +21,7 @@
 # disable checking only in the subtree of BB_PROMPT_PROJECTS_PATH
 # by setting BB_PROMPT_PROJECTS to false
 ! [ -v BB_PROMPT_PROJECTS ] && BB_PROMPT_PROJECTS=true
+! [ -v BB_PROMPT_SHOW_TAG ] && BB_PROMPT_SHOW_TAG=false
 
 ## vim:ft=zsh
 
@@ -184,8 +185,14 @@ zstyle ':vcs_info:git*' actionformats "%F{${BB_PROMPT_GIT}}%s:(%f%F{${BB_PROMPT_
 
 ### ORDER HERE MATTERS
 
+if ${BB_PROMPT_SHOW_TAG}; then
+    zstyle ':vcs_info:git*+set-message:*' hooks git-st git-count git-tag git-branch git-stash
+else
+    zstyle ':vcs_info:git*+set-message:*' hooks git-st git-count git-branch git-stash
+fi
+
 # original
-zstyle ':vcs_info:git*+set-message:*' hooks git-st git-count git-branch git-stash
+# zstyle ':vcs_info:git*+set-message:*' hooks git-st git-count git-branch git-stash
 
 # activate git-tag
 # zstyle ':vcs_info:git*+set-message:*' hooks git-st git-count git-tag git-branch git-stash
