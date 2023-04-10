@@ -22,7 +22,7 @@
 # by setting BB_PROMPT_PROJECTS to false
 ! [ -v BB_PROMPT_PROJECTS ] && BB_PROMPT_PROJECTS=true
 ! [ -v BB_PROMPT_SHOW_TAG ] && BB_PROMPT_SHOW_TAG=false
-! [ -v BB_PROMPT_SIGN ] && BB_PROMPT_SIGN="%"
+! [ -v BB_PROMPT_SIGN ] && BB_PROMPT_SIGN="%%"
 
 ## vim:ft=zsh
 
@@ -102,7 +102,7 @@ prompt_precmd() {
         if "$(warp_term_program)"; then
             PS1="%B%F{${BB_PROMPT_DIR}}%~%f"
         else
-            PS1=$'\n''%B%F{${BB_PROMPT_DIR}}%~%f'$'\n''%(?.%F{green}${BB_PROMPT_SIGN}.%F{red}${BB_PROMPT_SIGN})%f%b '
+            PS1=$'\n''%B%F{${BB_PROMPT_DIR}}%~%f'$'\n''%(?.%F{green}${BB_PROMPT_SIGN}.%F{9}${BB_PROMPT_SIGN})%f%b '
         fi
     else
         if "$(warp_term_program)"; then
