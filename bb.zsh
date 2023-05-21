@@ -56,8 +56,8 @@ FORCE_RUN_VCS_INFO=1
 zstyle ':vcs_info:*+pre-get-data:*' hooks pre-get-data
 +vi-pre-get-data() {
     # Only Git and Mercurial support need caching.
-		# For simplicity only Git support for caching is enabled.
-		# Abort if any other VCS except Git is used.
+    # For simplicity only Git support for caching is enabled.
+    # Abort if any other VCS except Git is used.
     [[ "$vcs" != git ]] && return
 
     # If the shell just started up or we changed directories (or for other
@@ -95,10 +95,10 @@ warp_term_program() {
 prompt_precmd() {
     # first run the system so everything is setup correctly.
     vcs_info
-		# Only populate PS1 with vcs_info when the vcs_info_msg'es length is not zero
+    # Only populate PS1 with vcs_info when the vcs_info_msg'es length is not zero
     if [[ -z ${vcs_info_msg_0_} ]]; then
-				# check if zsh runs inside warp terminal
-				# handle warp prompt differently
+        # check if zsh runs inside warp terminal
+        # handle warp prompt differently
         if "$(warp_term_program)"; then
             PS1="%B%F{${BB_PROMPT_DIR}}%~%f"
         else
