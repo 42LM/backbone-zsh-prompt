@@ -249,7 +249,13 @@ fi
 # zstyle ':vcs_info:git*+set-message:*' hooks git-tag
 +vi-git-tag(){
     local tag=$(git name-rev --name-only --no-undefined --always HEAD)
-    [[ -n ${tag} ]] && [[ ${tag} =~ [0-9] ]] && hook_com[branch]+="%F{${BB_PROMPT_GIT}}/%f%F{${BB_PROMPT_TAG}}${tag[6, -1]}%f%F{${BB_PROMPT_BRANCH}}"
+    if [[ -n ${tag} ]] && [[ ${tag} =~ [0-9] ]]; then
+        hook_com[branch]+="%F{${BB_PROMPT_GIT}}/%f%F{${BB_PROMPT_TAG}}${tag[6, -1]}%f%F{${BB_PROMPT_BRANCH}}"
+    else
+        # due to unexpected behaviour when not finding a tag
+        # the hook_com branch will be set to empty string value
+        hook_com[branch]+=""
+    fi
 }
 
 ### Display changed file count on branch

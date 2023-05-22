@@ -134,6 +134,7 @@ source $HOME/.config/zsh/backbone-zsh-prompt/bb.zsh
 - [x] option for showing git tag!?
 - [x] option to set prompt sign for e.g. iterm
 - [x] use ansi escape codes for terminal colors when not in warp terminal
+- [x] fix git-tag issue (when git-tag is set but no git tag is present the space between the branchname and staged/unstaged symbol is not being displayed)
 - [ ] custom colorization of prompt sign success/failure
 - [ ] make it faster!?
 - [ ] option for DEBUG!?
