@@ -1,4 +1,5 @@
 <p align="center"><img src="https://i.imgur.com/2faISPH.png" width="800"></p>
+<p align="right"><sub>* screenshot taken in <a href="https://github.com/warpdotdev/Warp">warp</a> terminal</sub></p> 
 <h1 align="center">BB 🦴 -- backbone zsh prompt</h1>
 <p align="center">A bare minimum single file prompt, fast as a roadrunner MEEP! MEEP! 💨 ...</p>
 
