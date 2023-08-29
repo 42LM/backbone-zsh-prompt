@@ -32,6 +32,15 @@ The default setup expects the projects you work on daily to be in the folder `$H
 >**Note**:  
 >It is also possible to deacitvate that behaviour completely by setting the `BB_PROMPT_PROJECTS=false` to false.
 
+```mermaid
+flowchart TD
+    A{"BB_PROMPT_PROJECTS"};
+    A -- "true" --> B["only check for changes in `BB_PROMPT_PROJECTS_PATH`\n\n(default: `${HOME}/code`)"];
+    A -- "false" --> C["check for changes everywhere"];
+    B ----> D["vcs_info"];
+    C ----> D["vcs_info"];
+```
+
 ## Install
 ### Clone the repository:
 * Clone into `~/.zsh`
