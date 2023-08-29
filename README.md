@@ -1,20 +1,24 @@
-# 🦴 BackBone zsh prompt
+<p align="center"><img src="https://i.imgur.com/2faISPH.png" width="800"></p>
+<h1 align="center">BB 🦴 -- backbone zsh prompt</h1>
+<p align="center">A bare minimum single file prompt, fast as a roadrunner MEEP! MEEP! 💨 ...</p>
+
+<br><br>
+
 BackBone is a prompt with the bare minimum needed for a working zsh prompt that tracks git changes.  
 BB[^1] is ~a blazingly fast~ the roadrunner of the prompts! Be prepared for some [Meep! Meep! Moments](https://youtu.be/Hd2JgADY9d8).
 
-I was in need of a super simple minimal prompt that fulfills my needs:
-* fast
-* easy setup
-* single file
-* git support
-* minimal features
-
-... furthermore i ended up building this one.
+I was in need of a super simple minimal prompt that fulfills my needs. It has to be fast, easy to setup, a single file and have git support with minimal features. Furthermore i ended up building this one.
 
 If you are like me and just looking for a prompt that is _"not more than the bare minimum needed"_  
 **-- Stop looking!**
 
 🚧 Please keep in mind: While this prompt is already battle tested it is still work in progress 🚧
+
+## Table of Contents
+* [Install](#install)
+* [Explanation of elements](#explanation-of-elements)
+* [Colorization options](#colorization-options)
+* [Todo](#todo)
 
 ## Install
 ### Clone the repository:
@@ -51,11 +55,8 @@ If you are like me and just looking for a prompt that is _"not more than the bar
   source $HOME/.config/zsh/backbone-zsh-prompt/prompt.zsh
   ```
 
-## Screenshots
-### formats
-![formats](/screenshots/formats.png)
-### actionformats
-![actionformat](/screenshots/actionformats.png)
+## Explanation of elements
+![](https://i.imgur.com/rR2qmX3.png)
 
 ## Colorization options
 | Option                 | Description                            | Default value |
@@ -80,10 +81,12 @@ export BB_PROMPT_TAG="blue"
 >E.g. [Pure](https://github.com/sindresorhus/pure) ❤️.
 
 ## Todo
-- [ ] better screenshots (do not forget ahead and behind)
+- [x] better screenshots (do not forget ahead and behind)
+  - now has a better and more appealing picture that explains the elements of the prompt
 - [x] adjust color of slash in between ahead and behind
   - now has the color of `BB_PROMPT_GIT`
 - [ ] adjust VARs (more/rmv?)
+- [ ] remove more unused code!?
 
 
 [^1]: BackBone zsh prompt
