@@ -1,6 +1,6 @@
 # BB - BackBone zsh prompt -- A bare 🦴 minimum backbone prompt -- git
 # Maintainer:   Lukas Moeller <github.com/lmllrjr/backbone-zsh-prompt>
-# Version:      0
+# Version:      0.1.0
 #
 # ℹ️  Get more Information:
 #   https://zsh.sourceforge.io/Doc/Release/User-Contributions.html#Version-Control-Information

@@ -13,8 +13,6 @@ I was in need of a super simple minimal prompt that fulfills my needs. It has to
 If you are like me and just looking for a prompt that is _"not more than the bare minimum needed"_  
 **-- Stop looking!**
 
-🚧 Please keep in mind: While this prompt is already battle tested it is still work in progress 🚧
-
 ## Table of Contents
 * [Information in advance](#information-in-advance)
 * [Install](#install)
