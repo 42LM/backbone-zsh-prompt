@@ -133,9 +133,9 @@ source $HOME/.config/zsh/backbone-zsh-prompt/bb.zsh
 - [x] remove more unused code!?
 - [x] option for showing git tag!?
 - [x] option to set prompt sign for e.g. iterm
+- [x] use ansi escape codes for terminal colors when not in warp terminal
 - [ ] custom colorization of prompt sign success/failure
 - [ ] make it faster!?
-- [ ] use ansi escape codes for terminal colors when not in warp terminal
 - [ ] option for DEBUG!?
 
 ~- [ ] adjust VARs (more/rmv?)~
