@@ -133,6 +133,11 @@ add-zsh-hook chpwd prompt_chpwd
 if ${BB_PROMPT_PROJECTS}; then
     zstyle -e ':vcs_info:git:*' \
         check-for-changes 'estyle-cfc && reply=( true ) || reply=( false )'
+else
+    # activate checking for changes in general
+    # using `check-for-staged-changes` is faster here
+    # https://zsh.sourceforge.io/Doc/Release/User-Contributions.html#Version-Control-Information:~:text=disabled%20by%20default.-,check%2Dfor%2Dstaged%2Dchanges,-This%20style%20is
+    zstyle ':vcs_info:git:*' check-for-changes true
 fi
 
 estyle-cfc() {
@@ -155,12 +160,6 @@ estyle-cfc() {
 
 # Debugging is off by default - of course.
 # zstyle ':vcs_info:*+*:*' debug true
-
-if ${BB_PROMPT_PROJECTS}; then
-    zstyle ':vcs_info:*' check-for-staged-changes true
-else
-    zstyle ':vcs_info:*' check-for-changes true
-fi
 
 # Check the repository for changes so they can be used in %u/%c (see
 # below). This comes with a speed penalty for bigger repositories.
