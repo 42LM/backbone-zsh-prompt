@@ -170,6 +170,7 @@ zstyle ':vcs_info:*' check-for-staged-changes true
 
 # This string will be used in the %c escape if there are staged changes in the repository.
 zstyle ':vcs_info:git*' stagedstr '∗'
+# This string will be used in the %u escape if there are unstaged changes in the repository.
 zstyle ':vcs_info:git*' unstagedstr '+'
 
 zstyle ':vcs_info:git*' formats "%F{${BB_PROMPT_GIT}}%s:(%f%F{${BB_PROMPT_BRANCH}}%b%c%u%f%F{${BB_PROMPT_GIT}})%f%m"
