@@ -114,13 +114,13 @@ prompt_precmd() {
         if "$(warp_term_program)"; then
             PS1="%B%F{${BB_PROMPT_DIR}}%~%f"
         else
-            PS1=$'\n''%B%F{${BB_PROMPT_DIR}}%~%f'$'\n''%(?.%F{green}${BB_PROMPT_SIGN}.%F{9}${BB_PROMPT_SIGN})%f%b '
+            PS1=$'\n''%B%F{${BB_PROMPT_DIR}}%~%f'$'\n''%(?.%F{2}${BB_PROMPT_SIGN}.%F{9}${BB_PROMPT_SIGN})%f%b '
         fi
     else
         if "$(warp_term_program)"; then
             PS1="%B%F{${BB_PROMPT_DIR}}%~%f ${vcs_info_msg_0_}%b"
         else
-            PS1=$'\n''%B%F{${BB_PROMPT_DIR}}%~%f ${vcs_info_msg_0_}'$'\n''%(?.%F{green}${BB_PROMPT_SIGN}.%F{9}${BB_PROMPT_SIGN})%f%b '
+            PS1=$'\n''%B%F{${BB_PROMPT_DIR}}%~%f ${vcs_info_msg_0_}'$'\n''%(?.%F{2}${BB_PROMPT_SIGN}.%F{9}${BB_PROMPT_SIGN})%f%b '
         fi
     fi
 }
