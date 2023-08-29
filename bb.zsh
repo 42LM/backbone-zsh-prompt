@@ -249,7 +249,7 @@ fi
 # zstyle ':vcs_info:git*+set-message:*' hooks git-tag
 +vi-git-tag(){
     local tag=$(git name-rev --name-only --no-undefined --always HEAD)
-    if [[ -n ${tag} ]] && [[ ${tag} =~ [0-9] ]]; then
+    if [[ -n ${tag} ]] && [[ ${tag} =~ [0-9] ]] && [[ ${tag[@]:0:4} == "tags" ]]; then
         hook_com[branch]+="%F{${BB_PROMPT_GIT}}/%f%F{${BB_PROMPT_TAG}}${tag[6, -1]}%f%F{${BB_PROMPT_BRANCH}}"
     else
         # due to unexpected behaviour when not finding a tag
