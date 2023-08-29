@@ -85,6 +85,8 @@ export BB_PROMPT_TAG="blue"
   - now has a better and more appealing picture that explains the elements of the prompt
 - [x] adjust color of slash in between ahead and behind
   - now has the color of `BB_PROMPT_GIT`
+- [ ] option to turn off estyle-cfc / only checking for changes in `~/code/...`
+  - right now the (`+`/unstaged) element is not shown when outside of `~/code/...` for perfomance reasons
 - [ ] adjust VARs (more/rmv?)
 - [ ] remove more unused code!?
 
