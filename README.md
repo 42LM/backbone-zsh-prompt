@@ -19,7 +19,8 @@ If you are like me and just looking for a prompt that is _"not more than the bar
 * [Information in advance](#information-in-advance)
 * [Install](#install)
 * [Explanation of elements](#explanation-of-elements)
-* [Colorization options](#colorization-options-/-settings)
+* [Colorization options](#colorization-options--settings)
+* [Example config](#example-config)
 * [Todo](#todo)
 
 ## Information in advance
@@ -85,16 +86,24 @@ The default setup expects the projects you work on daily to be in the folder `$H
 | BB_PROMPT_PROJECTS_PATH | The path of the project folder           | `"${HOME}/code"` | string |
 | BB_PROMPT_PROJECTS      | Turn the project folder option on or off | `true`           | bool   |
 
-Just set the variables in your `.zshrc` file:
+## Example config
+Just set the variables in your `.zshrc` file.
+
 >**Warning**:  
 >Make sure to set the vars before actually loading the prompt!
 
+### `~/.zshrc`:
 ```zsh
+# set vars
 export BB_PROMPT_DIR=6
 export BB_PROMPT_GIT="#EEEEEE"
 export BB_PROMPT_TAG="blue"
 export BB_PROMPT_PROJECTS_PATH="${HOME}/my/projects/path"
 export BB_PROMPT_PROJECTS=false
+
+# only load prompt if the `prompt.zsh` file exists
+[ -f $HOME/.config/zsh/backbone-zsh-prompt/prompt.zsh ] && \
+source $HOME/.config/zsh/backbone-zsh-prompt/prompt.zsh
 ```
 
 >**Note**:  
@@ -110,6 +119,7 @@ export BB_PROMPT_PROJECTS=false
   - furthermore there is another option to set the directory of the projects folder
 - [ ] option to set prompt sign for e.g. iterm
 - [ ] option for showing git tag!?
+- [ ] option for DEBUG!?
 - [ ] adjust VARs (more/rmv?)
 - [ ] remove more unused code!?
 
