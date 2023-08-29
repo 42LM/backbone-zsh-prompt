@@ -16,10 +16,20 @@ If you are like me and just looking for a prompt that is _"not more than the bar
 🚧 Please keep in mind: While this prompt is already battle tested it is still work in progress 🚧
 
 ## Table of Contents
+* [Information in advance](#information-in-advance)
 * [Install](#install)
 * [Explanation of elements](#explanation-of-elements)
-* [Colorization options](#colorization-options)
+* [Colorization options](#colorization-options-/-settings)
 * [Todo](#todo)
+
+## Information in advance
+### Projects Path
+This prompt is optimized to be speedy in big repositories. By default it will only enable checking for git changes in specified folder.
+
+The default setup expects the projects you work on daily to be in the folder `$HOME/code`. If you are not happy with that setup simply set the `BB_PROMPT_PROJECTS_PATH="$HOME/whatever/you/desire` var to your desired path.
+
+>**Note**:  
+>It is also possible to deacitvate that behaviour completely by setting the `BB_PROMPT_PROJECTS=false` to false.
 
 ## Install
 ### Clone the repository:
@@ -61,19 +71,19 @@ If you are like me and just looking for a prompt that is _"not more than the bar
 ## Explanation of elements
 ![](https://i.imgur.com/rR2qmX3.png)
 
-## Colorization options
-| Option                  | Description                              | Default value    |
-|-------------------------|------------------------------------------|------------------|
-| BB_PROMPT_DIR           | The working directory                    | `"#6c71c4"`      |
-| BB_PROMPT_GIT           | The shown VCS in use (`git:()`)          | `"#586e75"`      |
-| BB_PROMPT_BRANCH        | The git branch name                      | `"#dc322f"`      |
-| BB_PROMPT_ACTION        | The git actions rebase/merge             | `"#b58900"`      |
-| BB_PROMPT_AHEAD_BEHIND  | The ahead and behind arrows + counters   | `"#2aa198"`      |
-| BB_PROMPT_TAG           | The git tag                              | `"#93a1a1"`      |
-| BB_PROMPT_COUNT         | Changed file count on branch             | `"#93a1a1"`      |
-|                         |                                          |                  |
-| BB_PROMPT_PROJECTS_PATH | The path of the project folder           | `"${HOME}/code"` |
-| BB_PROMPT_PROJECTS      | Turn the project folder option on or off | `true`           |
+## Colorization options / settings
+| Option                  | Description                              | Default value    | Type   |
+|-------------------------|------------------------------------------|------------------|--------|
+| BB_PROMPT_DIR           | The working directory                    | `"#6c71c4"`      | string |
+| BB_PROMPT_GIT           | The shown VCS in use (`git:()`)          | `"#586e75"`      | string |
+| BB_PROMPT_BRANCH        | The git branch name                      | `"#dc322f"`      | string |
+| BB_PROMPT_ACTION        | The git actions rebase/merge             | `"#b58900"`      | string |
+| BB_PROMPT_AHEAD_BEHIND  | The ahead and behind arrows + counters   | `"#2aa198"`      | string |
+| BB_PROMPT_TAG           | The git tag                              | `"#93a1a1"`      | string |
+| BB_PROMPT_COUNT         | Changed file count on branch             | `"#93a1a1"`      | string |
+|                         |                                          |                  | string |
+| BB_PROMPT_PROJECTS_PATH | The path of the project folder           | `"${HOME}/code"` | string |
+| BB_PROMPT_PROJECTS      | Turn the project folder option on or off | `true`           | bool   |
 
 Just set the variables in your `.zshrc` file:
 >**Warning**:  
