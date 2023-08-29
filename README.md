@@ -61,21 +61,29 @@ If you are like me and just looking for a prompt that is _"not more than the bar
 ![](https://i.imgur.com/rR2qmX3.png)
 
 ## Colorization options
-| Option                 | Description                            | Default value |
-|------------------------|----------------------------------------|---------------|
-| BB_PROMPT_DIR          | The working directory                  | `#6c71c4`     |
-| BB_PROMPT_GIT          | The shown VCS in use (`git:()`)        | `#586e75`     |
-| BB_PROMPT_BRANCH       | The git branch name                    | `#dc322f`     |
-| BB_PROMPT_ACTION       | The git actions rebase/merge           | `#b58900`     |
-| BB_PROMPT_AHEAD_BEHIND | The ahead and behind arrows + counters | `#2aa198`     |
-| BB_PROMPT_TAG          | The git tag                            | `#93a1a1`     |
-| BB_PROMPT_COUNT        | Changed file count on branch           | `#93a1a1`     |
+| Option                  | Description                              | Default value    |
+|-------------------------|------------------------------------------|------------------|
+| BB_PROMPT_DIR           | The working directory                    | `"#6c71c4"`      |
+| BB_PROMPT_GIT           | The shown VCS in use (`git:()`)          | `"#586e75"`      |
+| BB_PROMPT_BRANCH        | The git branch name                      | `"#dc322f"`      |
+| BB_PROMPT_ACTION        | The git actions rebase/merge             | `"#b58900"`      |
+| BB_PROMPT_AHEAD_BEHIND  | The ahead and behind arrows + counters   | `"#2aa198"`      |
+| BB_PROMPT_TAG           | The git tag                              | `"#93a1a1"`      |
+| BB_PROMPT_COUNT         | Changed file count on branch             | `"#93a1a1"`      |
+|                         |                                          |                  |
+| BB_PROMPT_PROJECTS_PATH | The path of the project folder           | `"${HOME}/code"` |
+| BB_PROMPT_PROJECTS      | Turn the project folder option on or off | `true`           |
 
 Just set the variables in your `.zshrc` file:
+>**Warning**:  
+>Make sure to set the vars before actually loading the prompt!
+
 ```zsh
 export BB_PROMPT_DIR=6
 export BB_PROMPT_GIT="#EEEEEE"
 export BB_PROMPT_TAG="blue"
+export BB_PROMPT_PROJECTS_PATH="${HOME}/my/projects/path"
+export BB_PROMPT_PROJECTS=false
 ```
 
 >**Note**:  
@@ -87,8 +95,8 @@ export BB_PROMPT_TAG="blue"
   - now has a better and more appealing picture that explains the elements of the prompt
 - [x] adjust color of slash in between ahead and behind
   - now has the color of `BB_PROMPT_GIT`
-- [ ] option to turn off estyle-cfc / only checking for changes in `~/code/...`
-  - right now the (`+`/unstaged) element is not shown when outside of `~/code/...` for perfomance reasons
+- [x] option to turn off estyle-cfc / only checking for changes in `~/code/...`
+  - furthermore there is another option to set the directory of the projects folder
 - [ ] option for showing git tag!?
 - [ ] adjust VARs (more/rmv?)
 - [ ] remove more unused code!?
