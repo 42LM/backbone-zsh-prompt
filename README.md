@@ -70,7 +70,7 @@ The default setup expects the projects you work on daily to be in the folder `$H
   ```
 
 ## Explanation of elements
-![](https://i.imgur.com/rR2qmX3.png)
+![](https://i.imgur.com/AOMkFAN.png)
 
 ## Colorization options / settings
 | Option                  | Description                              | Default value    | Type   |
