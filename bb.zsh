@@ -1,5 +1,7 @@
-# The minimum backbone 🦴 zsh prompt
-
+# BB - BackBone zsh prompt -- A bare 🦴 minimum backbone prompt -- git
+# Maintainer:   Lukas Moeller <github.com/lmllrjr/backbone-zsh-prompt>
+# Version:      0
+#
 # ℹ️  Get more Information:
 #   https://zsh.sourceforge.io/Doc/Release/User-Contributions.html#Version-Control-Information
 #
@@ -14,7 +16,6 @@
 ! [ -v BB_PROMPT_AHEAD_BEHIND ] && BB_PROMPT_AHEAD_BEHIND="#2aa198"
 ! [ -v BB_PROMPT_TAG ] && BB_PROMPT_TAG="#93a1a1"
 ! [ -v BB_PROMPT_COUNT ] && BB_PROMPT_COUNT="#93a1a1"
-# TODO: one missing var for delimiter in ahead behind
 
 ! [ -v BB_PROMPT_PROJECTS_PATH ] && BB_PROMPT_PROJECTS_PATH="${HOME}/code"
 # disable checking only in the subtree of BB_PROMPT_PROJECTS_PATH
@@ -23,7 +24,7 @@
 
 ## vim:ft=zsh
 
-### Running vcs_info #########################################################
+### Running vcs_info ######################################################### {{{
 
 # Mark vcs_info for autoloading first
 autoload -Uz vcs_info
@@ -38,9 +39,11 @@ setopt promptsubst
 FORCE_RUN_VCS_INFO=1
 
 # Only run vcs_info when necessary to speed up the prompt and make using
-# check-for-changes bearable in bigger repositories. This setup was
+# check-for-changes bearable in bigger repositories. This setup was originally
 # inspired by Bart Trojanowski
 # (http://jukie.net/~bart/blog/pimping-out-zsh-prompt).
+# Furthermore tweaked again by Seth House and Simon Ruderich
+# (https://github.com/zsh-users/zsh/blob/master/Misc/vcs_info-examples)
 #
 # This setup is by no means perfect. It can only detect changes done
 # through the VCS's commands run by the current shell. If you use your
@@ -50,9 +53,10 @@ FORCE_RUN_VCS_INFO=1
 # the VCS commands update the case check below.
 zstyle ':vcs_info:*+pre-get-data:*' hooks pre-get-data
 +vi-pre-get-data() {
-    # Only Git and Mercurial support and need caching. Abort if any other
-    # VCS is used.
-    [[ "$vcs" != git && "$vcs" != hg ]] && return
+    # Only Git and Mercurial support need caching.
+		# For simplicity only Git support for caching is enabled.
+		# Abort if any other VCS except Git is used.
+    [[ "$vcs" != git ]] && return
 
     # If the shell just started up or we changed directories (or for other
     # custom reasons) we must run vcs_info.
@@ -65,13 +69,10 @@ zstyle ':vcs_info:*+pre-get-data:*' hooks pre-get-data
     # default to not running it and selectively choose when we want to run
     # it (ret=0 means run it, ret=1 means don't).
     ret=1
-    # If a git/hg command was run then run vcs_info as the status might
+    # If a git command was run then run vcs_info as the status might
     # need to be updated.
-    case "$(fc -ln $(($HISTCMD-1)))" in
+    case "$(fc -ln $((HISTCMD-1)))" in
         git*)
-            ret=0
-            ;;
-        hg*)
             ret=0
             ;;
     esac
@@ -79,7 +80,7 @@ zstyle ':vcs_info:*+pre-get-data:*' hooks pre-get-data
 
 ### Helper for prompt_precmd
 # Check if shell is running in WarpTerminal
-function warp_term_program() {
+warp_term_program() {
     if [[ ${TERM_PROGRAM} = "WarpTerminal" ]]; then
         echo true
         return
@@ -90,25 +91,19 @@ function warp_term_program() {
 
 # Call vcs_info as precmd before every prompt.
 prompt_precmd() {
-    # As always first run the system so everything is setup correctly.
+    # first run the system so everything is setup correctly.
     vcs_info
-    # And then just set PS1, RPS1 and whatever you want to. This $PS1
-    # is (as with the other examples above too) just an example of a very
-    # basic single-line prompt. See "man zshmisc" for details on how to
-    # make this less readable. :-)
+		# Only populate PS1 with vcs_info when the vcs_info_msg'es length is not zero
     if [[ -z ${vcs_info_msg_0_} ]]; then
-        # Oh hey, nothing from vcs_info, so we got more space.
-        # Let's print a longer part of $PWD...
-        if $(warp_term_program); then
+				# check if zsh runs inside warp terminal
+				# handle warp prompt differently
+        if "$(warp_term_program)"; then
             PS1="%B%F{${BB_PROMPT_DIR}}%~%f"
         else
             PS1=$'\n''%B%F{${BB_PROMPT_DIR}}%~%f'$'\n''%%%f%b '
         fi
     else
-        # vcs_info found something, that needs space. So a shorter $PWD
-        # makes sense.
-
-        if $(warp_term_program); then
+        if "$(warp_term_program)"; then
             PS1="%B%F{${BB_PROMPT_DIR}}%~%f ${vcs_info_msg_0_}%b"
         else
             PS1=$'\n''%B%F{${BB_PROMPT_DIR}}%~%f ${vcs_info_msg_0_}'$'\n''%%%f%b '
@@ -123,31 +118,22 @@ prompt_chpwd() {
 }
 add-zsh-hook chpwd prompt_chpwd
 
-### check-for-changes just in some places ####################################
+############################################################################## }}}
 
-# Some backends (git and mercurial at the time of writing) can tell you
-# whether there are local changes in the current repository. While that's
-# nice, the actions needed to obtain the information can be potentially
-# expensive. So if you're working on something the size of the linux kernel
-# or some corporate code monstrosity you may want to think twice about
-# enabling the `check-for-changes' style unconditionally.
-#
-# Zsh's zstyle configuration system let's you do some magic to enable styles
-# only depending on some code you're running.
-#
-# So, what I'm doing is this: I'm keeping my own projects in `~/code'.
-# There are the projects I want the information for most. They are also
-# a lot smaller than the linux kernel so the information can be retrieved
-# instantaneously - even on my old laptop at 600MHz. And the following code
-# enables `check-for-changes' only in that subtree:
+### check-for-changes just in some places #################################### {{{
 
-# check if projects option is enabled
+# For more information about the method of enabling `check-for-changes` only in a certain subtree:
+#
+# https://github.com/zsh-users/zsh/blob/c006d7609703afcfb2162c36d4f745125df45879/Misc/vcs_info-examples#L72-L105
+#
+# only enable the `check-for-changes` in `BB_PROMPT_PROJECTS_PATH`
+# when `BB_PROMPT_PROJECTS` is set to true
 if ${BB_PROMPT_PROJECTS}; then
     zstyle -e ':vcs_info:git:*' \
         check-for-changes 'estyle-cfc && reply=( true ) || reply=( false )'
 fi
 
-function estyle-cfc() {
+estyle-cfc() {
     local d
     local -a cfc_dirs
     cfc_dirs=(
@@ -161,15 +147,17 @@ function estyle-cfc() {
     return 1
 }
 
-### Hooks ####################################################################
+############################################################################## }}}
+
+### Hooks #################################################################### {{{
 
 # Debugging is off by default - of course.
 # zstyle ':vcs_info:*+*:*' debug true
 
-if ! ${BB_PROMPT_PROJECTS}; then
-    zstyle ':vcs_info:*' check-for-changes true
-else
+if ${BB_PROMPT_PROJECTS}; then
     zstyle ':vcs_info:*' check-for-staged-changes true
+else
+    zstyle ':vcs_info:*' check-for-changes true
 fi
 
 # Check the repository for changes so they can be used in %u/%c (see
@@ -203,54 +191,32 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-st git-count git-branch git-stas
 # zstyle ':vcs_info:git*+set-message:*' hooks git-st git-count git-tag git-branch git-stash
 
 # for debug purposes activate this instead: check out the keys of the hook_com var
-# zstyle ':vcs_info:git*+set-message:*' hooks git-st git-count git-branch git-stash show-hook-keys
+# zstyle ':vcs_info:git*+set-message:*' hooks git-st git-count git-tag git-branch git-stash show-hook-keys
 
 # Further down, every function that uses a `+vi-*' prefix uses a hook.
 
 # git:
 
 ### SHOW hook_com keys <- debug purposes
-# zstyle ':vcs_info:hg*+set-message:*' hooks hg-fullglobalrev
-
+#
 # Output the key value pairs of hook_com
-function +vi-show-hook-keys() {
+# zstyle ':vcs_info:git*+set-message:*' hooks show-hooks-keys
++vi-show-hook-keys() {
     # Check for key names
     for key val in "${(@kv)hook_com}"; do
         echo "$key -> $val"
     done
 }
 
-### Truncate Long Hashes
-
-### Truncate a long hash to 12 characters (which is usually unique enough)
-# Use zformat syntax (remember %i is the hash): %12.12i
-
-### Fetch the full 40-character Mercurial revision id
-# There is no great way to obtain branch, local rev, and untracked changes in
-# addition to the full 40-character global rev id with a single invocation of
-# Mercurial. This hook obtains the full global rev id using xxd(1) (in the
-# same way the use-simple flag does) while retaining all the other vcs_info
-# default functionality and information.
-# zstyle ':vcs_info:hg*+set-message:*' hooks hg-fullglobalrev
-
-# Output the full 40-char global rev id
-function +vi-hg-fullglobalrev() {
-    local dirstatefile="${hook_com[base]}/.hg/dirstate"
-    local grevid="$(xxd -p -l 20 < ${dirstatefile})"
-    # Omit %h from your hgrevformat since it will be included below
-    hook_com[revision]="${hook_com[revision]} ${grevid}"
-}
-
 ### Put a space between the branchname and the staged/unstaged sign
 ### when one of staged or unstaged is set
 ### %b%c%u -> %b %c%u
-
 ### git: Show marker (*) if git branch is dirty
 ### git: Show marker (+) if git branch has unstaged changes
-# zstyle ':vcs_info:git*+set-message:*' hooks git-branch
 
 # Make sure you have added staged to your 'formats':  %c
-function +vi-git-branch(){
+# zstyle ':vcs_info:git*+set-message:*' hooks git-branch
++vi-git-branch(){
     if [[ ${hook_com[staged]} != '' ]] ||
         [[ ${hook_com[unstaged]} != '' ]]; then
         hook_com[branch]+=' '
@@ -258,23 +224,21 @@ function +vi-git-branch(){
 }
 
 ### Fetch the git tag for branch
-
 ### git: show (v.0.11.0) behind branchname if branch has tag
-# zstyle ':vcs_info:hg*+set-message:*' hooks hg-fullglobalrev
-
-# Make sure you have added branch to your formats: %b
+#
+# Make sure you have added branch to your formats:  %b
+# zstyle ':vcs_info:git*+set-message:*' hooks git-tag
 +vi-git-tag(){
     local tag=$(git name-rev --name-only --no-undefined --always HEAD)
     [[ -n ${tag} ]] && [[ ${tag} =~ [0-9] ]] && hook_com[branch]+="%F{${BB_PROMPT_GIT}}/%f%F{${BB_PROMPT_TAG}}${tag[6, -1]}%f%F{${BB_PROMPT_BRANCH}}"
 }
 
 ### Display changed file count on branch
-
 ### git: Show marker (±N) if count exists
-# zstyle ':vcs_info:git*+set-message:*' hooks git-count
-
+#
 # Make sure you have added misc to your 'formats':  %m
-function +vi-git-count() {
+# zstyle ':vcs_info:git*+set-message:*' hooks git-count
++vi-git-count() {
     local -a changed_file_count
 
     # only display changed file count on branch when action is empty
@@ -289,12 +253,11 @@ function +vi-git-count() {
 }
 
 ### Display count of stash
-
 ### git: Show marker (≡N) if stash exists
-# zstyle ':vcs_info:git*+set-message:*' hooks git-stash
-
+#
 # Make sure you have added misc to your 'formats':  %m
-function +vi-git-stash() {
+# zstyle ':vcs_info:git*+set-message:*' hooks git-stash
++vi-git-stash() {
     local -a stash
 
     # only display changed file count on branch when action is empty
@@ -311,11 +274,11 @@ function +vi-git-stash() {
 }
 
 ### Compare local changes to remote changes
-
 ### git: Show ⇡N/⇣N when your local branch is ahead-of or behind remote HEAD.
+#
 # Make sure you have added misc to your 'formats':  %m
 # zstyle ':vcs_info:git*+set-message:*' hooks git-st
-function +vi-git-st() {
++vi-git-st() {
     local ahead behind
     local -a gitstatus
 
@@ -338,16 +301,22 @@ function +vi-git-st() {
     fi
 }
 
-
 ### Show information about patch series
-# This is used with with hg mq, quilt, and git rebases and conflicts.
+### git: show 2/4 (number of applied patches/number of unapplied patches)
+#
+# This is used with with git rebases and conflicts.
 #
 # All these cases have a notion of a "series of patches/commits" that is being
 # applied.  The following shows the information about the most recent patch to
 # have been applied:
+# Make sure you have added the name of the top-most applied patch to your 'formats':  %p
 zstyle ':vcs_info:*+gen-applied-string:*' hooks gen-applied-string
-function +vi-gen-applied-string() {
++vi-gen-applied-string() {
     local conflicted_file_count=$(git ls-files --unmerged | cut -f2 | sort -u | wc -l | Xargs)
     hook_com[applied-string]+="±${conflicted_file_count}"
     ret=1
 }
+
+############################################################################## }}}
+
+# vim: set foldmethod=marker foldlevel=0:
