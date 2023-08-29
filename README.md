@@ -17,13 +17,39 @@ If you are like me and just looking for a prompt that is _"not more than the bar
 🚧 Please keep in mind: While this prompt is already battle tested it is still work in progress 🚧
 
 ## Install
-Load the prompt in your `.zshrc` file:
+### Clone the repository:
+* Clone into `~/.zsh`
+  ```zsh
+  git clone git@github.com:lmllrjr/backbone-zsh-prompt.git ~/.zsh/backbone-zsh-prompt
+  ```
+* Clone into `~/.config/zsh`
+  ```zsh
+  git clone git@github.com:lmllrjr/backbone-zsh-prompt.git ~/.config/zsh/backbone-zsh-prompt
+  ```
 
-```zsh
-# only load prompt if the `prompt.zsh` file exists
-[ -f $HOME/path-to-bb-folder/backbone-zsh-prompt/prompt.zsh ] && \
-source $HOME/path-to-bb-folder/backbone-zsh-prompt/prompt.zsh
-```
+### For the purists, download the only relevant file `prompt.zsh`:
+* Download to `~/.zsh`:
+  ```zsh
+  curl -JO https://github.com/lmllrjr/backbone-zsh-prompt/prompt.zsh --create-dirs --output-dir ~/.zsh/backbone-zsh-prompt
+  ```
+* Download to `~/.config/zsh`:
+  ```zsh
+  curl -JO https://github.com/lmllrjr/backbone-zsh-prompt/prompt.zsh --create-dirs --output-dir ~/.config/zsh/backbone-zsh-prompt
+  ```
+
+### Load the prompt in your `.zshrc` file:
+* Load from `~/.zsh`:
+  ```zsh
+  # only load prompt if the `prompt.zsh` file exists
+  [ -f $HOME/.zsh/backbone-zsh-prompt/prompt.zsh ] && \
+  source $HOME/.zsh/backbone-zsh-prompt/prompt.zsh
+  ```
+* Load from `~/.config/zsh`:
+  ```zsh
+  # only load prompt if the `prompt.zsh` file exists
+  [ -f $HOME/.config/zsh/backbone-zsh-prompt/prompt.zsh ] && \
+  source $HOME/.config/zsh/backbone-zsh-prompt/prompt.zsh
+  ```
 
 ## Screenshots
 ### formats
@@ -52,6 +78,11 @@ export BB_PROMPT_TAG="blue"
 >**Note**:  
 >If you want a fully-fledged prompt you should use one of the more sophisticated projects around github.  
 >E.g. [Pure](https://github.com/sindresorhus/pure) ❤️.
+
+## Todo
+- [ ] better screenshots (do not forget ahead and behind)
+- [ ] adjust color of slash in between ahead and behind
+- [ ] adjust VARs (more/rmv?)
 
 
 [^1]: BackBone zsh prompt
