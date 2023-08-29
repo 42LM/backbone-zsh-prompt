@@ -318,7 +318,7 @@ function +vi-git-st() {
     (( $ahead )) && gitstatus+=( "%F{${BB_PROMPT_AHEAD_BEHIND}}⇡${ahead}%f" )
     (( $behind )) && gitstatus+=( "%F{${BB_PROMPT_AHEAD_BEHIND}}⇣${behind}%f" )
 
-    hook_com[misc]+=${(j:%F{9}/%f:)gitstatus}
+    hook_com[misc]+=${(j:%F{${BB_PROMPT_GIT}}/%f:)gitstatus}
 }
 
 
