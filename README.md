@@ -120,7 +120,8 @@ source $HOME/.config/zsh/backbone-zsh-prompt/bb.zsh
 - [x] remove more unused code!?
 - [ ] option to set prompt sign for e.g. iterm
 - [ ] option for showing git tag!?
-- [ ] option for DEBUG!?
+- [ ] option for DEBUG!?  
+
 ~- [ ] adjust VARs (more/rmv?)~
 
 
