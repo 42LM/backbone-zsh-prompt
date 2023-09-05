@@ -27,8 +27,8 @@ This prompt is optimized to be speedy in big repositories. By default it will on
 
 The default setup expects the projects you work on daily to be in the folder `$HOME/code`. If you are not happy with that setup simply set the `BB_PROMPT_PROJECTS_PATH="$HOME/whatever/you/desire` var to your desired path.
 
->**Note**:  
->It is also possible to deacitvate that behaviour completely by setting the `BB_PROMPT_PROJECTS=false` to false.
+> [!NOTE]  
+> It is also possible to deacitvate that behaviour completely by setting the `BB_PROMPT_PROJECTS=false` to false.
 
 ```mermaid
 flowchart TD
@@ -98,8 +98,8 @@ flowchart TD
 ## Example config
 Just set the variables in your `.zshrc` file.
 
->**Warning**:  
->Make sure to set the vars before actually loading the prompt!
+> [!IMPORTANT]    
+> Make sure to set the vars before actually loading the prompt!
 
 ### `~/.zshrc`:
 ```zsh
@@ -117,9 +117,9 @@ export BB_PROMPT_SIGN="$"
 source $HOME/.config/zsh/backbone-zsh-prompt/bb.zsh
 ```
 
->**Note**:  
->If you want a fully-fledged prompt you should use one of the more sophisticated projects around github.  
->E.g. [Pure](https://github.com/sindresorhus/pure) ❤️.
+> [!NOTE]  
+> If you want a fully-fledged prompt you should use one of the more sophisticated projects around github.  
+> E.g. [Pure](https://github.com/sindresorhus/pure) ❤️.
 
 ## Todo
 - [x] better screenshots (do not forget ahead and behind)
@@ -133,6 +133,7 @@ source $HOME/.config/zsh/backbone-zsh-prompt/bb.zsh
 - [x] option to set prompt sign for e.g. iterm
 - [x] use ansi escape codes for terminal colors when not in warp terminal
 - [x] fix git-tag issue (when git-tag is set but no git tag is present the space between the branchname and staged/unstaged symbol is not being displayed)
+- [ ] easier installation
 - [ ] custom colorization of prompt sign success/failure
 - [ ] make it faster!?
 - [ ] option for DEBUG!?
