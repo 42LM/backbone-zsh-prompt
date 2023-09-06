@@ -86,13 +86,13 @@ flowchart TD
 ## Colorization options / settings
 | Option                  | Description                              | Default value    | Type    |
 |-------------------------|------------------------------------------|------------------|---------|
-| BB_PROMPT_DIR           | The working directory                    | `"#6c71c4"`      | string  |
-| BB_PROMPT_GIT           | The shown VCS in use (`git:()`)          | `"#586e75"`      | string  |
-| BB_PROMPT_BRANCH        | The git branch name                      | `"#dc322f"`      | string  |
-| BB_PROMPT_ACTION        | The git actions rebase/merge             | `"#b58900"`      | string  |
-| BB_PROMPT_AHEAD_BEHIND  | The ahead and behind arrows + counters   | `"#2aa198"`      | string  |
-| BB_PROMPT_TAG           | The git tag                              | `"#93a1a1"`      | string  |
-| BB_PROMPT_COUNT         | Changed file count on branch             | `"#93a1a1"`      | string  |
+| BB_PROMPT_DIR           | The working directory                    | `"#6c71c4"` ![#6c71c4](https://via.placeholder.com/15/6c71c4/6c71c4.png) | string  |
+| BB_PROMPT_GIT           | The shown VCS in use (`git:()`)          | `"#586e75"` ![#586e75](https://via.placeholder.com/15/586e75/586e75.png) | string  |
+| BB_PROMPT_BRANCH        | The git branch name                      | `"#dc322f"` ![#dc322f](https://via.placeholder.com/15/dc322f/dc322f.png) | string  |
+| BB_PROMPT_ACTION        | The git actions rebase/merge             | `"#b58900"` ![#b58900](https://via.placeholder.com/15/b58900/b58900.png) | string  |
+| BB_PROMPT_AHEAD_BEHIND  | The ahead and behind arrows + counters   | `"#2aa198"` ![#2aa198](https://via.placeholder.com/15/2aa198/2aa198.png) | string  |
+| BB_PROMPT_TAG           | The git tag                              | `"#93a1a1"` ![#93a1a1](https://via.placeholder.com/15/93a1a1/93a1a1.png) | string  |
+| BB_PROMPT_COUNT         | Changed file count on branch             | `"#93a1a1"` ![#93a1a1](https://via.placeholder.com/15/93a1a1/93a1a1.png) | string  |
 |                         |                                          |                  |         |
 | BB_PROMPT_SHOW_TAG      | Turn show tag option on or off           | `false`          | bool    |
 | BB_PROMPT_PROJECTS_PATH | The path of the project folder           | `"${HOME}/code"` | string  |
