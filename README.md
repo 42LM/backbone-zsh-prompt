@@ -53,17 +53,17 @@ flowchart TD
 ### For the purists, download the only relevant file `bb.zsh`:
 * Download to `~/.zsh`:
   ```zsh
-  curl -Lo ~/.zsh/backbone-zsh-prompt/bb.zsh --create-dirs \
+  curl -fLo ~/.zsh/backbone-zsh-prompt/bb.zsh --create-dirs \
   https://raw.githubusercontent.com/lmllrjr/backbone-zsh-prompt/main/bb.zsh
   ```
 * Download to `~/.config/zsh`:
   ```zsh
-  curl -Lo ~/.config/zsh/backbone-zsh-prompt/bb.zsh --create-dirs \
+  curl -fLo ~/.config/zsh/backbone-zsh-prompt/bb.zsh --create-dirs \
   https://raw.githubusercontent.com/lmllrjr/backbone-zsh-prompt/main/bb.zsh
   ```
 * Simply just download the file without creating any directories:
   ```zsh
-  curl -LO https://raw.githubusercontent.com/lmllrjr/backbone-zsh-prompt/main/bb.zsh
+  curl -fLO https://raw.githubusercontent.com/lmllrjr/backbone-zsh-prompt/main/bb.zsh
   ```
 
 ### Load the prompt in your `.zshrc` file:
