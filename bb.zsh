@@ -42,6 +42,7 @@ fi
 
 # Mark vcs_info for autoloading first
 autoload -Uz vcs_info
+autoload -Uz add-zsh-hook
 
 # Allow substitutions and expansions in the prompt, necessary for
 # using a single-quoted $vcs_info_msg_0_ in PS1, RPOMPT (as used here) and
