@@ -25,6 +25,7 @@
 ! [ -v BB_PROMPT_PROJECTS ] && BB_PROMPT_PROJECTS=true
 ! [ -v BB_PROMPT_SHOW_TAG ] && BB_PROMPT_SHOW_TAG=false
 ! [ -v BB_PROMPT_SIGN ] && BB_PROMPT_SIGN="%%"
+! [ -v BB_PROMPT_CLOCK ] && BB_PROMPT_CLOCK=""
 
 ## vim:ft=zsh
 
@@ -104,6 +105,11 @@ prompt_precmd() {
         PS1=$'\n''%B%F{${BB_PROMPT_DIR}}%~%f'$'\n''%(?.%F{2}${BB_PROMPT_SIGN}.%F{9}${BB_PROMPT_SIGN})%f%b '
     else
         PS1=$'\n''%B%F{${BB_PROMPT_DIR}}%~%f ${vcs_info_msg_0_}'$'\n''%(?.%F{2}${BB_PROMPT_SIGN}.%F{9}${BB_PROMPT_SIGN})%f%b '
+    fi
+
+    if [[ -n ${BB_PROMPT_CLOCK} ]]; then
+      # TODO: Move to first line of prompt :S
+      RPROMPT=$'%F{#2aa198}%D{%H:%M:%S}%f' # right clock
     fi
 }
 add-zsh-hook precmd prompt_precmd
