@@ -9,25 +9,15 @@
 #   https://github.com/zsh-users/zsh/blob/master/Misc/vcs_info-examples
 
 ### Defining variables
-if [[ ${TERM_PROGRAM} = "WarpTerminal" ]]; then
-  ! [ -v BB_PROMPT_DIR ] && BB_PROMPT_DIR="#6c71c4"
-  ! [ -v BB_PROMPT_GIT ] && BB_PROMPT_GIT="#586e75"
-  ! [ -v BB_PROMPT_BRANCH ] && BB_PROMPT_BRANCH="#dc322f"
-  ! [ -v BB_PROMPT_ACTION ] && BB_PROMPT_ACTION="#b58900"
-  ! [ -v BB_PROMPT_AHEAD_BEHIND ] && BB_PROMPT_AHEAD_BEHIND="#2aa198"
-  ! [ -v BB_PROMPT_TAG ] && BB_PROMPT_TAG="#93a1a1"
-  ! [ -v BB_PROMPT_COUNT ] && BB_PROMPT_COUNT="#93a1a1"
-else
-  # use ansi escape codes for terminal colors
-  # default colors picked with solarized theme
-  ! [ -v BB_PROMPT_DIR ] && BB_PROMPT_DIR="13"
-  ! [ -v BB_PROMPT_GIT ] && BB_PROMPT_GIT="10"
-  ! [ -v BB_PROMPT_BRANCH ] && BB_PROMPT_BRANCH="1"
-  ! [ -v BB_PROMPT_ACTION ] && BB_PROMPT_ACTION="3"
-  ! [ -v BB_PROMPT_AHEAD_BEHIND ] && BB_PROMPT_AHEAD_BEHIND="4"
-  ! [ -v BB_PROMPT_TAG ] && BB_PROMPT_TAG="14"
-  ! [ -v BB_PROMPT_COUNT ] && BB_PROMPT_COUNT="14"
-fi
+# use ansi escape codes for terminal colors
+# default colors picked with solarized theme
+! [ -v BB_PROMPT_DIR ] && BB_PROMPT_DIR="13"
+! [ -v BB_PROMPT_GIT ] && BB_PROMPT_GIT="10"
+! [ -v BB_PROMPT_BRANCH ] && BB_PROMPT_BRANCH="1"
+! [ -v BB_PROMPT_ACTION ] && BB_PROMPT_ACTION="3"
+! [ -v BB_PROMPT_AHEAD_BEHIND ] && BB_PROMPT_AHEAD_BEHIND="4"
+! [ -v BB_PROMPT_TAG ] && BB_PROMPT_TAG="14"
+! [ -v BB_PROMPT_COUNT ] && BB_PROMPT_COUNT="14"
 
 ! [ -v BB_PROMPT_PROJECTS_PATH ] && BB_PROMPT_PROJECTS_PATH="${HOME}/code"
 # disable checking only in the subtree of BB_PROMPT_PROJECTS_PATH
