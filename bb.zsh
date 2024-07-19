@@ -98,21 +98,12 @@ warp_term_program() {
 prompt_precmd() {
     # first run the system so everything is setup correctly.
     vcs_info
+
     # Only populate PS1 with vcs_info when the vcs_info_msg'es length is not zero
     if [[ -z ${vcs_info_msg_0_} ]]; then
-        # check if zsh runs inside warp terminal
-        # handle warp prompt differently
-        if "$(warp_term_program)"; then
-            PS1="%B%F{${BB_PROMPT_DIR}}%~%f"
-        else
-            PS1=$'\n''%B%F{${BB_PROMPT_DIR}}%~%f'$'\n''%(?.%F{2}${BB_PROMPT_SIGN}.%F{9}${BB_PROMPT_SIGN})%f%b '
-        fi
+        PS1=$'\n''%B%F{${BB_PROMPT_DIR}}%~%f'$'\n''%(?.%F{2}${BB_PROMPT_SIGN}.%F{9}${BB_PROMPT_SIGN})%f%b '
     else
-        if "$(warp_term_program)"; then
-            PS1="%B%F{${BB_PROMPT_DIR}}%~%f ${vcs_info_msg_0_}%b"
-        else
-            PS1=$'\n''%B%F{${BB_PROMPT_DIR}}%~%f ${vcs_info_msg_0_}'$'\n''%(?.%F{2}${BB_PROMPT_SIGN}.%F{9}${BB_PROMPT_SIGN})%f%b '
-        fi
+        PS1=$'\n''%B%F{${BB_PROMPT_DIR}}%~%f ${vcs_info_msg_0_}'$'\n''%(?.%F{2}${BB_PROMPT_SIGN}.%F{9}${BB_PROMPT_SIGN})%f%b '
     fi
 }
 add-zsh-hook precmd prompt_precmd
