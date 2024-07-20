@@ -16,16 +16,18 @@
 ! [ -v BB_PROMPT_BRANCH ] && BB_PROMPT_BRANCH="1"
 ! [ -v BB_PROMPT_ACTION ] && BB_PROMPT_ACTION="3"
 ! [ -v BB_PROMPT_AHEAD_BEHIND ] && BB_PROMPT_AHEAD_BEHIND="4"
-! [ -v BB_PROMPT_TAG ] && BB_PROMPT_TAG="14"
 ! [ -v BB_PROMPT_COUNT ] && BB_PROMPT_COUNT="14"
+
+# The following colors are optional
+# when set the tag/clock will be enabled
+! [ -v BB_PROMPT_TAG ] && BB_PROMPT_TAG=""
+! [ -v BB_PROMPT_CLOCK ] && BB_PROMPT_CLOCK=""
 
 ! [ -v BB_PROMPT_PROJECTS_PATH ] && BB_PROMPT_PROJECTS_PATH="${HOME}/code"
 # disable checking only in the subtree of BB_PROMPT_PROJECTS_PATH
 # by setting BB_PROMPT_PROJECTS to false
 ! [ -v BB_PROMPT_PROJECTS ] && BB_PROMPT_PROJECTS=true
-! [ -v BB_PROMPT_SHOW_TAG ] && BB_PROMPT_SHOW_TAG=false
 ! [ -v BB_PROMPT_SIGN ] && BB_PROMPT_SIGN="%%"
-! [ -v BB_PROMPT_CLOCK ] && BB_PROMPT_CLOCK=""
 
 ## vim:ft=zsh
 
@@ -185,7 +187,7 @@ zstyle ':vcs_info:git*' actionformats "%F{${BB_PROMPT_GIT}}%s:(%f%F{${BB_PROMPT_
 
 ### ORDER HERE MATTERS
 
-if ${BB_PROMPT_SHOW_TAG}; then
+if [[ -n ${BB_PROMPT_TAG} ]]; then
     zstyle ':vcs_info:git*+set-message:*' hooks git-st git-count git-tag git-branch git-stash
 else
     zstyle ':vcs_info:git*+set-message:*' hooks git-st git-count git-branch git-stash

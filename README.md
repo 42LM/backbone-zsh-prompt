@@ -86,15 +86,16 @@ flowchart TD
 ## Colorization options / settings
 | Option                  | Description                              | Default value    | Type    |
 |-------------------------|------------------------------------------|------------------|---------|
-| BB_PROMPT_DIR           | The working directory                    | `"#6c71c4"` ![#6c71c4](https://via.placeholder.com/15/6c71c4/6c71c4.png) | string  |
-| BB_PROMPT_GIT           | The shown VCS in use (`git:()`)          | `"#586e75"` ![#586e75](https://via.placeholder.com/15/586e75/586e75.png) | string  |
-| BB_PROMPT_BRANCH        | The git branch name                      | `"#dc322f"` ![#dc322f](https://via.placeholder.com/15/dc322f/dc322f.png) | string  |
-| BB_PROMPT_ACTION        | The git actions rebase/merge             | `"#b58900"` ![#b58900](https://via.placeholder.com/15/b58900/b58900.png) | string  |
-| BB_PROMPT_AHEAD_BEHIND  | The ahead and behind arrows + counters   | `"#2aa198"` ![#2aa198](https://via.placeholder.com/15/2aa198/2aa198.png) | string  |
-| BB_PROMPT_TAG           | The git tag                              | `"#93a1a1"` ![#93a1a1](https://via.placeholder.com/15/93a1a1/93a1a1.png) | string  |
-| BB_PROMPT_COUNT         | Changed file count on branch             | `"#93a1a1"` ![#93a1a1](https://via.placeholder.com/15/93a1a1/93a1a1.png) | string  |
+| BB_PROMPT_DIR           | The working directory                    | `"13"` ![#6c71c4](https://via.placeholder.com/15/6c71c4/6c71c4.png) | string  |
+| BB_PROMPT_GIT           | The shown VCS in use (`git:()`)          | `"10"` ![#586e75](https://via.placeholder.com/15/586e75/586e75.png) | string  |
+| BB_PROMPT_BRANCH        | The git branch name                      | `"1"`  ![#dc322f](https://via.placeholder.com/15/dc322f/dc322f.png) | string  |
+| BB_PROMPT_ACTION        | The git actions rebase/merge             | `"3"`  ![#b58900](https://via.placeholder.com/15/b58900/b58900.png) | string  |
+| BB_PROMPT_AHEAD_BEHIND  | The ahead and behind arrows + counters   | `"4"`  ![#2aa198](https://via.placeholder.com/15/2aa198/2aa198.png) | string  |
+| BB_PROMPT_COUNT         | Changed file count on branch             | `"14"` ![#93a1a1](https://via.placeholder.com/15/93a1a1/93a1a1.png) | string  |
 |                         |                                          |                  |         |
-| BB_PROMPT_SHOW_TAG      | Turn show tag option on or off           | `false`          | bool    |
+| BB_PROMPT_TAG           | The git tag color (If not empty the git tag is active) | `""`  | string  |
+| BB_PROMPT_CLOCK         | The clock (If not empty the clock is active)           | `""`  | string  |
+|                         |                                          |                  |         |
 | BB_PROMPT_PROJECTS_PATH | The path of the project folder           | `"${HOME}/code"` | string  |
 | BB_PROMPT_PROJECTS      | Turn the project folder option on or off | `true`           | bool    |
 | BB_PROMPT_SIGN          | Set the character of the prompt          | `"%"`            | string  |
@@ -113,7 +114,6 @@ export BB_PROMPT_GIT="#EEEEEE"
 export BB_PROMPT_TAG="blue"
 export BB_PROMPT_PROJECTS_PATH="${HOME}/my/projects/path"
 export BB_PROMPT_PROJECTS=false
-export BB_PROMPT_SHOW_TAG=true
 export BB_PROMPT_SIGN="$"
 
 # only load prompt if the `bb.zsh` file exists
@@ -137,8 +137,8 @@ source $HOME/.config/zsh/backbone-zsh-prompt/bb.zsh
 - [x] option to set prompt sign for e.g. iterm
 - [x] use ansi escape codes for terminal colors when not in warp terminal
 - [x] fix git-tag issue (when git-tag is set but no git tag is present the space between the branchname and staged/unstaged symbol is not being displayed)
+- [x] custom colorization of prompt sign success/failure
 - [ ] easier installation
-- [ ] custom colorization of prompt sign success/failure
 - [ ] make it faster!?
 - [ ] option for DEBUG!?
 
