@@ -14,37 +14,28 @@ If you are like me and just looking for a prompt that is _"not more than the bar
 **-- Stop looking!**
 
 ## Table of Contents
-* [Information in advance](#information-in-advance)
-* [Install](#install)
+* [Quickstart](#quickstart)
 * [Explanation of elements](#explanation-of-elements)
 * [Colorization options](#colorization-options--settings)
 * [Example config](#example-config)
-* [Todo](#todo)
 
-## Install
+## Quickstart
 ### Clone the repository:
-* Clone into `~/.zsh`
-  ```zsh
-  git clone git@github.com:lmllrjr/backbone-zsh-prompt.git ~/.zsh/backbone-zsh-prompt
-  ```
-* Clone into `~/.config/zsh`
-  ```zsh
-  git clone git@github.com:lmllrjr/backbone-zsh-prompt.git ~/.config/zsh/backbone-zsh-prompt
-  ```
+Clone the repository into `~/.config/zsh`:
+```zsh
+git clone git@github.com:lmllrjr/backbone-zsh-prompt.git ~/.config/zsh/backbone-zsh-prompt
+```
 
-### Load the prompt in your `.zshrc` file:
-* Load from `~/.zsh`:
-  ```zsh
-  # only load prompt if the `bb.zsh` file exists
-  [ -f $HOME/.zsh/backbone-zsh-prompt/bb.zsh ] && \
-  source $HOME/.zsh/backbone-zsh-prompt/bb.zsh
-  ```
-* Load from `~/.config/zsh`:
-  ```zsh
-  # only load prompt if the `bb.zsh` file exists
-  [ -f $HOME/.config/zsh/backbone-zsh-prompt/bb.zsh ] && \
-  source $HOME/.config/zsh/backbone-zsh-prompt/bb.zsh
-  ```
+### Load the prompt in `.zshrc` file:
+Copy the following lines into your `.zshrc` file:
+```zsh
+# only load prompt if the `bb.zsh` file exists
+[ -f $HOME/.config/zsh/backbone-zsh-prompt/bb.zsh ] && \
+source $HOME/.config/zsh/backbone-zsh-prompt/bb.zsh
+```
+
+> [!TIP]
+> More installation options can be found on the BB Wiki [Install](https://github.com/lmllrjr/backbone-zsh-prompt/wiki/Install) page.
 
 ## Explanation of elements
 ![](https://i.imgur.com/AOMkFAN.png)
@@ -65,6 +56,9 @@ If you are like me and just looking for a prompt that is _"not more than the bar
 | BB_PROMPT_PROJECTS_PATH | The path of the project folder           | `"${HOME}/code"` | string  |
 | BB_PROMPT_PROJECTS      | Turn the project folder option on or off | `true`           | bool    |
 | BB_PROMPT_SIGN          | Set the character of the prompt          | `"%"`            | string  |
+
+> [!TIP]
+> More information on the [Projects Path](https://github.com/lmllrjr/backbone-zsh-prompt/wiki/Projects-Path) can be found in the wiki!
 
 ## Example config
 Just set the variables in your `.zshrc` file.
@@ -90,3 +84,6 @@ source $HOME/.config/zsh/backbone-zsh-prompt/bb.zsh
 > [!NOTE]  
 > If you want a fully-fledged prompt you should use one of the more sophisticated projects around github.  
 > E.g. [Pure](https://github.com/sindresorhus/pure) ❤️.
+
+
+[^1]: BackBone zsh prompt
