@@ -108,25 +108,3 @@ source $HOME/.config/zsh/backbone-zsh-prompt/bb.zsh
 > [!NOTE]  
 > If you want a fully-fledged prompt you should use one of the more sophisticated projects around github.  
 > E.g. [Pure](https://github.com/sindresorhus/pure) ❤️.
-
-## Todo
-- [x] better screenshots (do not forget ahead and behind)
-  - now has a better and more appealing picture that explains the elements of the prompt
-- [x] adjust color of slash in between ahead and behind
-  - now has the color of `BB_PROMPT_GIT`
-- [x] option to turn off estyle-cfc / only checking for changes in `~/code/...`
-  - furthermore there is another option to set the directory of the projects folder
-- [x] remove more unused code!?
-- [x] option for showing git tag!?
-- [x] option to set prompt sign for e.g. iterm
-- [x] use ansi escape codes for terminal colors when not in warp terminal
-- [x] fix git-tag issue (when git-tag is set but no git tag is present the space between the branchname and staged/unstaged symbol is not being displayed)
-- [x] custom colorization of prompt sign success/failure
-- [ ] easier installation
-- [ ] make it faster!?
-- [ ] option for DEBUG!?
-
-~- [ ] adjust VARs (more/rmv?)~
-
-
-[^1]: BackBone zsh prompt
