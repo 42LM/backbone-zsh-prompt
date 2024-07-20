@@ -50,22 +50,6 @@ flowchart TD
   git clone git@github.com:lmllrjr/backbone-zsh-prompt.git ~/.config/zsh/backbone-zsh-prompt
   ```
 
-### For the purists, download the only relevant file `bb.zsh`:
-* Download to `~/.zsh`:
-  ```zsh
-  curl -fLo ~/.zsh/backbone-zsh-prompt/bb.zsh --create-dirs \
-  https://raw.githubusercontent.com/lmllrjr/backbone-zsh-prompt/main/bb.zsh
-  ```
-* Download to `~/.config/zsh`:
-  ```zsh
-  curl -fLo ~/.config/zsh/backbone-zsh-prompt/bb.zsh --create-dirs \
-  https://raw.githubusercontent.com/lmllrjr/backbone-zsh-prompt/main/bb.zsh
-  ```
-* Simply just download the file without creating any directories:
-  ```zsh
-  curl -fLO https://raw.githubusercontent.com/lmllrjr/backbone-zsh-prompt/main/bb.zsh
-  ```
-
 ### Load the prompt in your `.zshrc` file:
 * Load from `~/.zsh`:
   ```zsh
