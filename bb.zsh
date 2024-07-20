@@ -9,31 +9,24 @@
 #   https://github.com/zsh-users/zsh/blob/master/Misc/vcs_info-examples
 
 ### Defining variables
-if [[ ${TERM_PROGRAM} = "WarpTerminal" ]]; then
-  ! [ -v BB_PROMPT_DIR ] && BB_PROMPT_DIR="#6c71c4"
-  ! [ -v BB_PROMPT_GIT ] && BB_PROMPT_GIT="#586e75"
-  ! [ -v BB_PROMPT_BRANCH ] && BB_PROMPT_BRANCH="#dc322f"
-  ! [ -v BB_PROMPT_ACTION ] && BB_PROMPT_ACTION="#b58900"
-  ! [ -v BB_PROMPT_AHEAD_BEHIND ] && BB_PROMPT_AHEAD_BEHIND="#2aa198"
-  ! [ -v BB_PROMPT_TAG ] && BB_PROMPT_TAG="#93a1a1"
-  ! [ -v BB_PROMPT_COUNT ] && BB_PROMPT_COUNT="#93a1a1"
-else
-  # use ansi escape codes for terminal colors
-  # default colors picked with solarized theme
-  ! [ -v BB_PROMPT_DIR ] && BB_PROMPT_DIR="13"
-  ! [ -v BB_PROMPT_GIT ] && BB_PROMPT_GIT="10"
-  ! [ -v BB_PROMPT_BRANCH ] && BB_PROMPT_BRANCH="1"
-  ! [ -v BB_PROMPT_ACTION ] && BB_PROMPT_ACTION="3"
-  ! [ -v BB_PROMPT_AHEAD_BEHIND ] && BB_PROMPT_AHEAD_BEHIND="4"
-  ! [ -v BB_PROMPT_TAG ] && BB_PROMPT_TAG="14"
-  ! [ -v BB_PROMPT_COUNT ] && BB_PROMPT_COUNT="14"
-fi
+# use ansi escape codes for terminal colors
+# default colors picked with solarized theme
+! [ -v BB_PROMPT_DIR ] && BB_PROMPT_DIR="13"
+! [ -v BB_PROMPT_GIT ] && BB_PROMPT_GIT="10"
+! [ -v BB_PROMPT_BRANCH ] && BB_PROMPT_BRANCH="1"
+! [ -v BB_PROMPT_ACTION ] && BB_PROMPT_ACTION="3"
+! [ -v BB_PROMPT_AHEAD_BEHIND ] && BB_PROMPT_AHEAD_BEHIND="4"
+! [ -v BB_PROMPT_COUNT ] && BB_PROMPT_COUNT="14"
+
+# The following colors are optional
+# when set the tag/clock will be enabled
+! [ -v BB_PROMPT_TAG ] && BB_PROMPT_TAG=""
+! [ -v BB_PROMPT_CLOCK ] && BB_PROMPT_CLOCK=""
 
 ! [ -v BB_PROMPT_PROJECTS_PATH ] && BB_PROMPT_PROJECTS_PATH="${HOME}/code"
 # disable checking only in the subtree of BB_PROMPT_PROJECTS_PATH
 # by setting BB_PROMPT_PROJECTS to false
 ! [ -v BB_PROMPT_PROJECTS ] && BB_PROMPT_PROJECTS=true
-! [ -v BB_PROMPT_SHOW_TAG ] && BB_PROMPT_SHOW_TAG=false
 ! [ -v BB_PROMPT_SIGN ] && BB_PROMPT_SIGN="%%"
 
 ## vim:ft=zsh
@@ -108,21 +101,17 @@ warp_term_program() {
 prompt_precmd() {
     # first run the system so everything is setup correctly.
     vcs_info
+
     # Only populate PS1 with vcs_info when the vcs_info_msg'es length is not zero
     if [[ -z ${vcs_info_msg_0_} ]]; then
-        # check if zsh runs inside warp terminal
-        # handle warp prompt differently
-        if "$(warp_term_program)"; then
-            PS1="%B%F{${BB_PROMPT_DIR}}%~%f"
-        else
-            PS1=$'\n''%B%F{${BB_PROMPT_DIR}}%~%f'$'\n''%(?.%F{2}${BB_PROMPT_SIGN}.%F{9}${BB_PROMPT_SIGN})%f%b '
-        fi
+        PS1=$'\n''%B%F{${BB_PROMPT_DIR}}%~%f'$'\n''%(?.%F{2}${BB_PROMPT_SIGN}.%F{9}${BB_PROMPT_SIGN})%f%b '
     else
-        if "$(warp_term_program)"; then
-            PS1="%B%F{${BB_PROMPT_DIR}}%~%f ${vcs_info_msg_0_}%b"
-        else
-            PS1=$'\n''%B%F{${BB_PROMPT_DIR}}%~%f ${vcs_info_msg_0_}'$'\n''%(?.%F{2}${BB_PROMPT_SIGN}.%F{9}${BB_PROMPT_SIGN})%f%b '
-        fi
+        PS1=$'\n''%B%F{${BB_PROMPT_DIR}}%~%f ${vcs_info_msg_0_}'$'\n''%(?.%F{2}${BB_PROMPT_SIGN}.%F{9}${BB_PROMPT_SIGN})%f%b '
+    fi
+
+    if [[ -n ${BB_PROMPT_CLOCK} ]]; then
+      # TODO: Move to first line of prompt :S
+      RPROMPT=$'%F{#2aa198}%D{%H:%M:%S}%f' # right clock
     fi
 }
 add-zsh-hook precmd prompt_precmd
@@ -198,7 +187,7 @@ zstyle ':vcs_info:git*' actionformats "%F{${BB_PROMPT_GIT}}%s:(%f%F{${BB_PROMPT_
 
 ### ORDER HERE MATTERS
 
-if ${BB_PROMPT_SHOW_TAG}; then
+if [[ -n ${BB_PROMPT_TAG} ]]; then
     zstyle ':vcs_info:git*+set-message:*' hooks git-st git-count git-tag git-branch git-stash
 else
     zstyle ':vcs_info:git*+set-message:*' hooks git-st git-count git-branch git-stash
