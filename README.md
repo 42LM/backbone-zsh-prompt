@@ -21,24 +21,6 @@ If you are like me and just looking for a prompt that is _"not more than the bar
 * [Example config](#example-config)
 * [Todo](#todo)
 
-## Information in advance
-### Projects Path
-This prompt is optimized to be speedy in big repositories. By default it will only enable checking for git changes in specified folder.
-
-The default setup expects the projects you work on daily to be in the folder `$HOME/code`. If you are not happy with that setup simply set the `BB_PROMPT_PROJECTS_PATH="$HOME/whatever/you/desire` var to your desired path.
-
-> [!NOTE]  
-> It is also possible to deacitvate that behaviour completely by setting the `BB_PROMPT_PROJECTS=false` to false.
-
-```mermaid
-flowchart TD
-    A{"BB_PROMPT_PROJECTS"};
-    A -- "true" --> B["only check for changes in `BB_PROMPT_PROJECTS_PATH`\n\n(default: `${HOME}/code`)"];
-    A -- "false" --> C["check for changes everywhere"];
-    B ----> D["vcs_info"];
-    C ----> D["vcs_info"];
-```
-
 ## Install
 ### Clone the repository:
 * Clone into `~/.zsh`
