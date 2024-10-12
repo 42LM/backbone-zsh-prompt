@@ -1,5 +1,5 @@
 # BB - BackBone zsh prompt -- A bare 🦴 minimum backbone prompt -- git
-# Maintainer:   Lukas Moeller <github.com/lmllrjr/backbone-zsh-prompt>
+# Maintainer:   Lukas Moeller <github.com/42LM/backbone-zsh-prompt>
 # Version:      0.1.0
 #
 # ℹ️  Get more Information:
