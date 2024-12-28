@@ -3,7 +3,7 @@
 <h1 align="center">BB 🦴 -- backbone zsh prompt -- git</h1>
 <p align="center">A bare minimum single file prompt, fast as a roadrunner MEEP! MEEP! 💨 ...</p>
 
-<br><br>![Frame 1 (2)]()
+<br><br>
 
 
 BackBone is a prompt with the bare minimum needed for a working zsh prompt that tracks git changes.  
