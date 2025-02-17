@@ -1,5 +1,5 @@
-<p align="center"><img src="https://github.com/user-attachments/assets/012743bf-a074-4e0c-a8cb-5391af6499a5"></p>
-<p align="right"><sub>* screenshot taken in <a href="https://github.com/ghostty-org/ghostty">ghostty</a> terminal</sub></p> 
+<p align="center"><img src="https://github.com/user-attachments/assets/94e51ff1-3278-4cc5-83cf-9e1d31ece3e3" width="800"></p>
+<p align="right"><sub>* screenshot taken in <a href="https://github.com/warpdotdev/Warp">warp</a> terminal</sub></p> 
 <h1 align="center">BB 🦴 -- backbone zsh prompt -- git</h1>
 <p align="center">A bare minimum single file prompt, fast as a roadrunner MEEP! MEEP! 💨 ...</p>
 
